@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -54,6 +55,10 @@ public class Event implements Serializable {
 	@Column(nullable = true)
 	@JoinTable(name = "event_tags", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private Set<Tag> tag;
+	
+	
+	@ManyToOne
+	private Reward reward;
 
 	public Event() {
 
@@ -130,6 +135,16 @@ public class Event implements Serializable {
 	public void setEventOrganiser(boolean isEventOrganiser) {
 		this.isEventOrganiser = isEventOrganiser;
 	}
+
+	public Reward getRewards() {
+		return reward;
+	}
+
+	public void setRewards(Reward reward) {
+		this.reward = reward;
+	}
+	
+	
 	
 	
 

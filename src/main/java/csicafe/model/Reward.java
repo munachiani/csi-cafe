@@ -1,11 +1,15 @@
 package csicafe.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +28,19 @@ public class Reward implements Serializable {
 
 	@Column(name = "reward_provider")
 	private boolean isRewardProvider = false;
+	
+	
+	@Column(name="start_time")
+	private Date startTime;
+	
+	@Column(name="end_time")
+	private Date endTime;
 
+	
+	@OneToMany(mappedBy="reward")
+	private List<Event> events;
+	
+	
 	public Reward() {
 	}
 
@@ -59,5 +75,33 @@ public class Reward implements Serializable {
 	public void setRewardProvider(boolean isRewardProvider) {
 		this.isRewardProvider = isRewardProvider;
 	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
+	
+	
+	
 
 }

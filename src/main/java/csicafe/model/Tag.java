@@ -30,9 +30,9 @@ public class Tag implements Serializable {
 	@Column(nullable = false)
 	private String affilications;
 	
-	@Column(name="event_organizer",nullable = false)
-	private boolean event_organizer = false;
-	
+//	@Column(name="event_organizer",nullable = false)
+//	private boolean event_organizer = false;
+//	
 	
 
 	@ManyToMany(mappedBy="tag", targetEntity = Event.class)
@@ -82,14 +82,14 @@ public class Tag implements Serializable {
 		this.event = event;
 	}
 	
-	public boolean isEvent_organizer() {
-		return event_organizer;
-	}
-
-	public void setEvent_organizer(boolean event_organizer) {
-		this.event_organizer = event_organizer;
-	}
-	
+//	public boolean isEvent_organizer() {
+//		return event_organizer;
+//	}
+//
+//	public void setEvent_organizer(boolean event_organizer) {
+//		this.event_organizer = event_organizer;
+//	}
+//	
 	
 
 }
