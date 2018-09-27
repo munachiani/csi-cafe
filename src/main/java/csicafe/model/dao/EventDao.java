@@ -8,7 +8,7 @@ public interface EventDao {
 	
 	Event getEvent( Long id );
 
-    List<Event> getEventss();
+    List<Event> getAllEvents();
 
 
 }

@@ -5,31 +5,37 @@ create table colleges (
         primary key (id)
     ) engine=InnoDB;
 
+    create table csi_events (
+       id bigint not null,
+        description varchar(255) not null,
+        end_time datetime(6) not null,
+        admin_approved bit not null,
+        admin_reviewd bit not null,
+        event_organizer bit not null,
+        location varchar(255) not null,
+        name varchar(255) not null,
+        start_time datetime(6) not null,
+        user_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
     create table departments (
        id bigint not null,
         name varchar(255),
         primary key (id)
     ) engine=InnoDB;
 
+    create table event_tags (
+       event_id bigint not null,
+        tag_id bigint not null,
+        primary key (event_id, tag_id)
+    ) engine=InnoDB;
+
     create table hibernate_sequence (
        next_val bigint
     ) engine=InnoDB;
 
-    insert into hibernate_sequence values ( 1 );
 
-    insert into hibernate_sequence values ( 1 );
-
-    insert into hibernate_sequence values ( 1 );
-
-    insert into hibernate_sequence values ( 1 );
-
-    insert into hibernate_sequence values ( 1 );
-
-    insert into hibernate_sequence values ( 1 );
-
-    insert into hibernate_sequence values ( 1 );
-
-    insert into hibernate_sequence values ( 1 );
 
     create table offices (
        id bigint not null,
@@ -59,9 +65,39 @@ create table colleges (
         primary key (id)
     ) engine=InnoDB;
 
+    create table rewards (
+       id bigint not null,
+        description varchar(255),
+        end_time datetime(6),
+        reward_provider bit,
+        organizer varchar(255),
+        reward_criteria integer,
+        start_time datetime(6),
+        events_id bigint,
+        tags_id bigint,
+        user_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
     create table roles (
        id bigint not null,
         name varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tags (
+       id bigint not null,
+        affilications varchar(255) not null,
+        content varchar(255) not null,
+        event_type varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table user_events (
+       id bigint not null,
+        isAttending bit not null,
+        event_id bigint,
+        user_id bigint,
         primary key (id)
     ) engine=InnoDB;
 
@@ -98,6 +134,21 @@ create table colleges (
        foreign key (department_id) 
        references departments (id);
 
+    alter table csi_events 
+       add constraint FKce2lhx3500dwnc8jb2kfc7bur 
+       foreign key (user_id) 
+       references users (id);
+
+    alter table event_tags 
+       add constraint FKt07xql63t6125c0wjk4j0lmqa 
+       foreign key (tag_id) 
+       references tags (id);
+
+    alter table event_tags 
+       add constraint FK99l7casxubkl8y3hto4y1s050 
+       foreign key (event_id) 
+       references csi_events (id);
+
     alter table organizational_units 
        add constraint FKlsc6via620pmlvm1wco3e9i18 
        foreign key (college_id) 
@@ -107,6 +158,31 @@ create table colleges (
        add constraint FKt6lvmfbqonddvqo3vqfrbamc 
        foreign key (office_id) 
        references offices (id);
+
+    alter table rewards 
+       add constraint FKqxb90w170j6dfxn0i2es8pq79 
+       foreign key (events_id) 
+       references csi_events (id);
+
+    alter table rewards 
+       add constraint FK4hvo7bomrg3tsw23ltqdkp4b0 
+       foreign key (tags_id) 
+       references tags (id);
+
+    alter table rewards 
+       add constraint FK5ko6wh7m9q06ew6o1tq90j0ym 
+       foreign key (user_id) 
+       references users (id);
+
+    alter table user_events 
+       add constraint FK4w7g45ko92fkynl1v7alyy0i7 
+       foreign key (event_id) 
+       references csi_events (id);
+
+    alter table user_events 
+       add constraint FKg3rv1yxrs56ohyn30rlt7vum7 
+       foreign key (user_id) 
+       references users (id);
 
     alter table users 
        add constraint FK44os4me16gw2p2uowkg2c7xjm 

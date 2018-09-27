@@ -36,11 +36,9 @@ public class User implements Serializable {
 	@Column(name = "last_name", nullable = false)
 	private String lastname;
 
-	 @ManyToOne(targetEntity = Position.class)
-	 private Position position;
+	@ManyToOne(targetEntity = Position.class)
+	private Position position;
 
-	// @OneToOne(targetEntity = OrganizationalUnit.class)
-	// private OrganizationalUnit organizationalUnit;
 
 	@Column(nullable = false, unique = true)
 	private String username;
@@ -51,11 +49,11 @@ public class User implements Serializable {
 	@Column(nullable = true)
 	private String title;
 
-	 @OneToOne(targetEntity = Program.class)
-	 private Program program;
-	 
-	 @ManyToOne(targetEntity=OrganizationalUnit.class)
-	 private OrganizationalUnit organization_unit;
+	@OneToOne(targetEntity = Program.class)
+	private Program program;
+
+	@ManyToOne(targetEntity = OrganizationalUnit.class)
+	private OrganizationalUnit organization_unit;
 
 	// @OneToMany(targetEntity = UserEvent.class)
 	// private Set<UserEvent> userEvent = new HashSet<UserEvent>();
@@ -184,9 +182,15 @@ public class User implements Serializable {
 		this.organization_unit = organization_unit;
 	}
 
-
-	
-	
+//	public Set<Event> getEvents() {
+//		return events;
+//	}
+//
+//	public void setEvents(Set<Event> events) {
+//		this.events = events;
+//	}
+//	
+//	
 
 	// public Position getPosition() {
 	// return position;
@@ -195,7 +199,5 @@ public class User implements Serializable {
 	// public void setPosition(Position position) {
 	// this.position = position;
 	// }
-	
-	
 
 }

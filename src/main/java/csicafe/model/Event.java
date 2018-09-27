@@ -1,9 +1,12 @@
 package csicafe.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "events")
+@Table(name = "csi_events")
 public class Event implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,31 +37,35 @@ public class Event implements Serializable {
 	private String location;
 
 	@Column(name = "start_time", nullable = false)
-	private Date startTime;
+	private Timestamp startTime;
 
 	@Column(name = "end_time", nullable = false)
-	private Date endTime;
+	private Timestamp endTime;
 
-	@Column(name="admin_approved",nullable = false)
+	@Column(name = "admin_approved", nullable = false)
 	private boolean isAdminApproved = false;
 
-	@Column(name="event_organizer",nullable = false)
+	@Column(name = "admin_reviewd", nullable = false)
+	private boolean isAdminReviewd = false;
+
+	@Column(name = "event_organizer", nullable = false)
 	private boolean isEventOrganiser = false;
 
-//	@OneToMany(targetEntity = UserEvent.class)
-//	@Column(name="event_id")
-//	private Set<UserEvent> userEvent = new HashSet<UserEvent>();
-	// @ManyToOne(targetEntity= User.class)
-	// List<User> user;
-
-//	@ManyToMany(targetEntity = Tag.class)
-//	@Column(nullable = true)
-//	@JoinTable(name = "event_tags", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-//	private Set<Tag> tag;
-//	
-//	
-//	@ManyToOne
-//	private Reward reward;
+	@ManyToMany(targetEntity = Tag.class)
+	@JoinTable(name = "event_tags", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "tag_id") })
+	private Set<Tag> tags;
+	
+	@ManyToOne(targetEntity = User.class)
+	private User user;
+	
+//	@ManyToMany(targetEntity = User.class)
+//	@JoinTable(name = "csi_events_users", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+//			@JoinColumn(name = "user_id") })
+//	private Set<User> users;
+	
+//	@ManyToMany(targetEntity=User.class)
+//	private Set<User> users;
 
 	public Event() {
 
@@ -100,25 +107,25 @@ public class Event implements Serializable {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 
-//	public Set<Tag> getTag() {
-//		return tag;
-//	}
-//
-//	public void setTag(Set<Tag> tag) {
-//		this.tag = tag;
-//	}
+	public void setStartTime(Timestamp startTime) {
+		this.startTime = startTime;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
 
 	public boolean isAdminApproved() {
 		return isAdminApproved;
@@ -136,49 +143,34 @@ public class Event implements Serializable {
 		this.isEventOrganiser = isEventOrganiser;
 	}
 
-//	public Reward getRewards() {
-//		return reward;
-//	}
-//
-//	public void setRewards(Reward reward) {
-//		this.reward = reward;
-//	}
-	
-	
+	public boolean isAdminReviewd() {
+		return isAdminReviewd;
+	}
+
+	public void setAdminReviewd(boolean isAdminReviewd) {
+		this.isAdminReviewd = isAdminReviewd;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 
-//	public boolean isAdmin_approval() {
-//		return admin_approval;
-//	}
-
-//	public void setAdmin_approval(boolean admin_approval) {
-//		this.admin_approval = admin_approval;
+//	public Set<User> getUsers() {
+//		return users;
 //	}
 //
-//	public boolean isEvent_organizer() {
-//		return event_organizer;
+//	public void setUsers(Set<User> users) {
+//		this.users = users;
 //	}
 //
-//	public void setEvent_organizer(boolean event_organizer) {
-//		this.event_organizer = event_organizer;
-//	}
+//	
+//	
 
-//	public Set<UserEvent> getUserEvent() {
-//		return userEvent;
-//	}
-//
-//	public void setUserEvent(Set<UserEvent> userEvent) {
-//		this.userEvent = userEvent;
-//	}
-
-	// public List<User> getUser() {
-	// return user;
-	// }
-	//
-	// public void setUser(List<User> user) {
-	// this.user = user;
-	// }
-	//
 
 }

@@ -23,7 +23,7 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public List<Event> getEventss() {
+	public List<Event> getAllEvents() {
 		return entityManager.createQuery( "from Event", Event.class )
 	            .getResultList();
 	}
