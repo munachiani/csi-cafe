@@ -20,9 +20,6 @@ public class Office implements Serializable {
 	
 	private String name;
 	
-	@ManyToOne
-	private OrganizationalUnit units;
-
 	public Office() {
 		// TODO Auto-generated constructor stub
 	}
@@ -43,15 +40,7 @@ public class Office implements Serializable {
 		this.name = name;
 	}
 
-	public OrganizationalUnit getUnits() {
-		return units;
-	}
 
-	public void setUnits(OrganizationalUnit units) {
-		this.units = units;
-	}
-
-	
 	
 
 	

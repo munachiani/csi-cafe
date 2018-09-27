@@ -7,7 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,23 +24,23 @@ public class OrganizationalUnit implements Serializable {
 
 	@Column(nullable = false)
 	private String name;
-
-	@OneToMany(mappedBy = "units")
-	private Set<Office> offices;
 	
-	@OneToMany(mappedBy = "units")
-	private Set<College> colleges;
+	@ManyToOne(targetEntity=College.class)
+	private College college;
+	
+	@ManyToOne(targetEntity=Office.class)
+	private Office office;
+	
+	
+
+//	@OneToMany(mappedBy = "units")
+//	private Set<Office> offices;
+//	
+//	@OneToMany(mappedBy = "units")
+//	private Set<College> colleges;
 
 	public OrganizationalUnit() {
 
-	}
-
-	public OrganizationalUnit(Long id, String name, Set<Office> offices, Set<College> colleges) {
-			
-		this.id = id;
-		this.name = name;
-		this.offices = offices;
-		this.colleges = colleges;
 	}
 
 	public Long getId() {
@@ -57,23 +59,27 @@ public class OrganizationalUnit implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Office> getOffices() {
-		return offices;
+	public College getCollege() {
+		return college;
 	}
 
-	public void setOffices(Set<Office> offices) {
-		this.offices = offices;
+	public void setCollege(College college) {
+		this.college = college;
 	}
 
-	// public Set<College> getColleges() {
-	// return colleges;
-	// }
-	//
-	//
-	// public void setColleges(Set<College> colleges) {
-	// this.colleges = colleges;
-	// }
-	//
-	//
+	public Office getOffice() {
+		return office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+	
+	
+	
+	
+
+	
+	
 
 }

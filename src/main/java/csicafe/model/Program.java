@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -23,17 +24,25 @@ public class Program implements Serializable {
 	    private String name;
 	    
 	    @Column(nullable=false)
-	    private String fullName;
+	    private String program_name;
 	    
 	    
 	    @Column(nullable=false)
 	    private String description;
 	    
+//	    @OneToOne(mappedBy="program")
+//	    private User user;
 	    
-	    public Program(Long id, String name, String fullName, String description) {
+	    
+	    public Program() {
+	    	
+	    }
+	    
+	    
+	    public Program(Long id, String name, String program_name, String description) {
 	    	this.id = id;
 	    	this.name = name;
-	    	this.fullName = fullName;
+	    	this.program_name = program_name;
 	    	this.description = description;
 	    	
 	    }
@@ -60,12 +69,12 @@ public class Program implements Serializable {
 
 
 		public String getFullName() {
-			return fullName;
+			return program_name;
 		}
 
 
 		public void setFullName(String fullName) {
-			this.fullName = fullName;
+			this.program_name = fullName;
 		}
 
 
@@ -77,11 +86,19 @@ public class Program implements Serializable {
 		public void setDescription(String description) {
 			this.description = description;
 		}
+
+
+//		public User getUser() {
+//			return user;
+//		}
+//
+//
+//		public void setUser(User user) {
+//			this.user = user;
+//		}
 		
-		public boolean isAdmin() {
-			
-			return false;
-		}
+	
+		
 	    
 	    
 }

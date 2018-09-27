@@ -1,6 +1,6 @@
 package csicafe.model.dao.jpa;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,7 +26,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getUsers()
     {
-        return entityManager.createQuery( "from User order by id", User.class )
+        return entityManager.createQuery( "from User", User.class )
             .getResultList();
     }
 

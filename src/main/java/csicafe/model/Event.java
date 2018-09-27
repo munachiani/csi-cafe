@@ -51,14 +51,14 @@ public class Event implements Serializable {
 	// @ManyToOne(targetEntity= User.class)
 	// List<User> user;
 
-	@ManyToMany(targetEntity = Tag.class)
-	@Column(nullable = true)
-	@JoinTable(name = "event_tags", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-	private Set<Tag> tag;
-	
-	
-	@ManyToOne
-	private Reward reward;
+//	@ManyToMany(targetEntity = Tag.class)
+//	@Column(nullable = true)
+//	@JoinTable(name = "event_tags", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+//	private Set<Tag> tag;
+//	
+//	
+//	@ManyToOne
+//	private Reward reward;
 
 	public Event() {
 
@@ -112,13 +112,13 @@ public class Event implements Serializable {
 		this.endTime = endTime;
 	}
 
-	public Set<Tag> getTag() {
-		return tag;
-	}
-
-	public void setTag(Set<Tag> tag) {
-		this.tag = tag;
-	}
+//	public Set<Tag> getTag() {
+//		return tag;
+//	}
+//
+//	public void setTag(Set<Tag> tag) {
+//		this.tag = tag;
+//	}
 
 	public boolean isAdminApproved() {
 		return isAdminApproved;
@@ -136,13 +136,13 @@ public class Event implements Serializable {
 		this.isEventOrganiser = isEventOrganiser;
 	}
 
-	public Reward getRewards() {
-		return reward;
-	}
-
-	public void setRewards(Reward reward) {
-		this.reward = reward;
-	}
+//	public Reward getRewards() {
+//		return reward;
+//	}
+//
+//	public void setRewards(Reward reward) {
+//		this.reward = reward;
+//	}
 	
 	
 	

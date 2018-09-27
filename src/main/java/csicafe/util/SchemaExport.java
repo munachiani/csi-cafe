@@ -28,7 +28,7 @@ public class SchemaExport {
         Formatter formatter = new DDLFormatterImpl();
         Scanner scanner = new Scanner( stringWriter.toString() );
         while( scanner.hasNextLine() )
-            System.out.println( formatter.format( scanner.nextLine() ) );
+            System.out.println( formatter.format( scanner.nextLine()+";" ) );
         scanner.close();
 
         System.exit( 0 );

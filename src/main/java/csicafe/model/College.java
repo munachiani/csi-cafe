@@ -1,13 +1,11 @@
 package csicafe.model;
 
-import java.io.Serializable;
-import java.util.Set;
+import java.io.Serializable; 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,24 +19,17 @@ public class College implements Serializable {
 	private Long id;
 
 	private String name;
+	
+	@ManyToOne(targetEntity=Department.class)
+	private Department department;
 
-	@OneToMany(mappedBy = "college")
-	private Set<Department> departments;
 
-	@ManyToOne
-	private OrganizationalUnit units;
 
 	public College() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public College(Long id, String name, Set<Department> departments) {
 
-		this.id = id;
-		this.name = name;
-		this.departments = departments;
-
-	}
 
 	public Long getId() {
 		return id;
@@ -56,21 +47,20 @@ public class College implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Department> getDepartments() {
-		return departments;
+
+
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setDepartments(Set<Department> departments) {
-		this.departments = departments;
-	}
 
-	public OrganizationalUnit getUnits() {
-		return units;
-	}
 
-	public void setUnits(OrganizationalUnit units) {
-		this.units = units;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
+	
+	
+
 	
 	
 

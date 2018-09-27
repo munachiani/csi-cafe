@@ -22,8 +22,6 @@ public class Department implements Serializable {
 	private String name;
 	
 	
-	@ManyToOne
-	private College college;
 
 	public Department() {
 		// TODO Auto-generated constructor stub
@@ -45,16 +43,7 @@ public class Department implements Serializable {
 		this.name = name;
 	}
 
-	public College getCollege() {
-		return college;
-	}
 
-	public void setCollege(College college) {
-		this.college = college;
-	}
-	
-	
-	
 	
 	
 
