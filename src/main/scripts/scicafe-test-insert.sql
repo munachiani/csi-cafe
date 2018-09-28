@@ -69,8 +69,8 @@
   	insert into users values (1,"mailstomuna@gmail.com",true, "Munachimso","Ani","abcd","Director of LSAMP","muna",1,1,1,2);
   	insert into users values (2,"ugo@gmail.com",true, "Ugo","Ani","abcd","President of ACM Student Chapter","ugo",1,2,2,2);
   	
-  	insert into csi_events values (1,"Join us for free popcorn, game play raffle prizes, great music, or just come hang out with friends. For more information or to request accommodations for a disability, please contact the U-SU Admin Office at (323) 343-2450","2018-09-27 00:00:00",false,false,false,"The Pit, University-Student Union Basement","Happy Hour at The Pit","2018-09-26 00:00:00",1);
-  	insert into csi_events values (2,"An eight-session, trauma-informed program that emphasizes process, not performance. It pairs collective drumming with therapy to build core social-emotional strengths. It includes guided interaction with rhythmic activities serving as a metaphor for life, followed by reflection and dialogue. Spots are limited. Please sign up at CSI, U-SU 204.","2018-09-27 00:00:00",false,false,false,"Xtreme Fitness, Basement, University-Student Union","Drum Circle Series","2018-09-26 00:00:00",1);
+  	insert into csi_events values (1,"Join us for free popcorn, game play raffle prizes, great music, or just come hang out with friends.","2018-09-27 00:00:00",false,false,false,"The Pit, University-Student Union Basement","Happy Hour at The Pit","2018-09-26 00:00:00",1);
+  	insert into csi_events values (2,"An eight-session, trauma-informed program that emphasizes process, not performance. ","2018-09-27 00:00:00",false,false,false,"Xtreme Fitness, Basement, University-Student Union","Drum Circle Series","2018-09-26 00:00:00",1);
 
   	
   	insert into event_tags values(1,1);
